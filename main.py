@@ -102,13 +102,6 @@ if __name__ == "__main__":
     with contextlib.suppress(KeyboardInterrupt, SystemExit):
         if platform.system() == "Windows":
             asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-        else:
-            try:
-                import uvloop
-
-                uvloop.install()
-            except ImportError:
-                logging.warning("uvloop not installed.")
 
         if platform.python_version_tuple() >= ("3", "11"):
             with asyncio.Runner() as runner:
